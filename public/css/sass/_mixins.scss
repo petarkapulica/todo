@@ -1,0 +1,33 @@
+@mixin screen($res-min, $res-max, $orientation: false) {
+  @if $orientation {
+    @media screen and (min-width: $res-min) and (max-width: $res-max)
+    and (orientation:#{$orientation}) {
+      @content;
+    }
+  }
+  @else {
+    @media screen and (min-width: $res-min) and (max-width: $res-max) {
+      @content;
+    }
+  }
+}
+
+@mixin max-screen($res) {
+  @media screen and (max-width: $res) {
+    @content;
+  }
+}
+
+@mixin min-screen($res) {
+  @media screen and (min-width: $res) {
+    @content;
+  }
+}
+
+
+
+
+@mixin background-opacity($color, $opacity: 0.3) {
+    background: $color; /* The Fallback */
+    background: rgba($color, $opacity);
+}

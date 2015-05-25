@@ -1,0 +1,162 @@
+body {
+    font-family: $body-font;
+    margin: 0;
+    padding: 0;
+    background: $todo-background;
+}
+
+
+h1 {
+    font-size: $font-header1;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.3);
+    text-shadow: -1px -1px rgba(0, 0, 0, 0.2);
+    padding: $gap-large;
+    font-weight: bold;
+}
+
+.todos {
+    margin: 0 auto;
+    text-align: center;
+    max-width: 1300px;
+    padding: $gap-small;
+    
+    .todos-wrapper{
+        display:inline-block;
+        @include background-opacity($todo-fill, 0.2);
+        box-shadow: 5px 0px 5px $todo-border;
+        border: 3px solid $todo-border;
+        border-radius: 10px;
+    
+        .ico-select {
+            background-image: url("../../images/sprite.png");
+            background-repeat: no-repeat;
+            background-position: -509px -29px;
+            margin-top: 25px;
+            height: 38px;
+            width: 30px;
+            cursor: pointer;
+            &:hover{
+                background-position: -509px 0px;
+            }
+        }
+        
+        .new-todo {
+            input {
+                height: 80px;
+                width: 210px;
+                font-size: $font-medium;
+                color: $todo-font;
+                font-style: italic;
+                padding: 0 $gap-large;
+                @include background-opacity($todo-fill, 0);
+                border: none;
+                &:focus {
+                    outline: 0;
+                }
+                @include min-screen($bp-small){
+                    width: 630px;
+                    font-size: $font-large;
+                };
+            } 
+        }
+    }
+    
+    .todo-list {
+        display:inline-block;
+        box-shadow: 5px 5px 5px $todo-border;
+        border: 3px solid $todo-border;
+        border-radius: 10px;
+        ul li {
+            font-size: $font-large;
+            width: 235px;
+            height: 60px;
+            display: table;
+            margin: 0 auto;
+            border-top: 1px solid $todo-border;
+            border-style:dashed;
+            color: $todo-font;
+            line-height: 56px;
+            @include min-screen($bp-small){
+                    width: 600px;
+                    font-size: $font-xlarge;
+                };
+                
+                .ico {
+                    width: 35px;
+                    height: 35px;
+                    display: inline-block;
+                    background-image: url("../../images/sprite.png");
+                    background-repeat: no-repeat;
+                    margin-top: 13px;
+                    cursor: pointer;
+                }
+                
+                .ico-check {
+                    background-position: -299px -29px;
+                    &:hover{
+                        background-position: -299px 0;
+                    }
+                }
+                
+                .ico-edit {
+                    background-position: -594px -29px;
+                    &:hover{
+                        background-position: -594px 0;
+                    }
+                }
+                
+                .ico-delete {
+                    background-position: -690px -29px;
+                    &:hover{
+                        background-position: -690px 0;
+                    }
+                }
+                
+                .todo-item {
+                    width: 55%;
+                    margin: 0 auto;
+                    overflow: hidden;
+                    font-size: $font-medium;
+                    text-align: left;
+                    line-height: 24px;
+                    @include min-screen($bp-small){
+                        width: 80%;
+                        font-size: $font-large;
+                        line-height: 58px;
+                    };
+                }
+                
+        }
+    }
+    
+    .todo-nav {
+        color: $todo-font-white;
+        display: inline-block;
+        width: 50%;
+        margin: 0 auto;
+        padding: $gap-large;
+        .todos-left, .todos-filter, .todos-clear {
+            width: 100%;
+            padding: 10px 0 10px;
+            @include min-screen($bp-small){
+                width: 33%;
+            };
+            span {
+                cursor: pointer;
+                button {
+                    background-color: $todo-fill;
+                    &:hover {
+                        background-color: $todo-border;
+                    }
+                }
+            }
+        }
+    }
+    
+    .footer {
+        padding: $gap-large;
+        color: $todo-font-white;
+        font-size: $font-small;
+    }
+}
