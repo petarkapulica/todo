@@ -18,3 +18,36 @@
 .right {
     float: right;
 }
+
+.ico {
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    background-image: url("../../images/sprite2.png");
+    background-repeat: no-repeat;
+    margin-top: 13px;
+    cursor: pointer;
+ }
+ 
+ .priority-star {
+    padding-left: 4px;
+    @include min-screen($bp-xsmall + 1){
+        padding-left: 8px;
+    };
+    text-align: right;
+    display: inline-block;
+    height: 22px;
+    width: 26px;
+    background-image: url("../../images/sprite2.png");
+    background-position: -119px -111px;
+    opacity: 0.2;
+    cursor: pointer;
+    &:hover{
+        font-size: 24px;
+        background-position: -120px -111px;
+    }
+ }
+ 
+.active-star {
+    opacity: 1;
+ }
