@@ -9,7 +9,7 @@ Todo.Application.prototype = {
     
     init : function()
     {
-        new Todo.Pamela();
+        new Todo.Controller();
     }
 };
 

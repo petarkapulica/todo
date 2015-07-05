@@ -2,15 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/var/www/todo/public/css/sass/_utils.scss</file>
-            <file>file:/var/www/todo/public/css/sass/_style.scss</file>
-            <file>file:/var/www/todo/public/javascripts/views/view.js</file>
-            <file>file:/var/www/todo/public/javascripts/pamelas/pamela.js</file>
-            <file>file:/var/www/todo/public/css/sass/_vars.scss</file>
-            <file>file:/var/www/todo/todo.html</file>
-            <file>file:/var/www/todo/public/javascripts/app.js</file>
-            <file>file:/var/www/todo/public/javascripts/models/model.js</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

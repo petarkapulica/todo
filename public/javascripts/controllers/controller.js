@@ -1,12 +1,12 @@
 ;
 var Todo = Todo || {};
 
-Todo.Pamela = function(){
+Todo.Controller = function(){
     //draw view on page reload
     this.doUpdate(this.criteria());
     
     //priority star animation
-    $('.priority-star.js-star').on('mouseenter', $.proxy(Todo.View.prototype.onStarHover, Todo.View));  
+    $('.priority-star.js-star').on('mouseenter', $.proxy(new Todo.View().onStarHover, Todo.View));  
     
     //on todo submit
     $('#new-todo').on('keydown', $.proxy(this.onSubmit, this));
@@ -28,55 +28,40 @@ Todo.Pamela = function(){
     //button actions
     $('.ico-select-all').on('click', $.proxy(this.onSelectAll, this));
     $('.clear-completed').on('click', $.proxy(this.onClearCompleted, this));
-    $('.ico-info').on('click', $.proxy(Todo.View.prototype.showAppInfo, Todo.View));
-    $('body').on('click', '.about-todo-app', $.proxy(Todo.View.prototype.hideAppInfo, Todo.View));
+    $('.ico-info').on('click', $.proxy(new Todo.View().showAppInfo, Todo.View));
+    $('body').on('click', '.about-todo-app', $.proxy(new Todo.View().hideAppInfo, Todo.View));
     $('.recycle-bin').on('click', $.proxy(this.onRecycleBin, this));
     $('body').on('click','.ico-restore', $.proxy(this.onRestore, this));
     $('.ico-sort-priority').on('click', $.proxy(this.onSort, this));
 };
 
-Todo.Pamela.prototype = {
+Todo.Controller.prototype = {
     
     criteria : function()
     {
-        if( $('.js-filter').attr('class').indexOf('active') > 0 )
-        {
-            return 'active';
-        }
-        else if( $('.js-filter').attr('class').indexOf('completed') > 0 )
-        {
-            return 'completed';
-        }
-        else if( $('.js-filter').attr('class').indexOf('cycle-bin') > 0 )
-        {
-            return 'deleted';
-        }
-        else
-        {
-            return 'all';
-        }
+        return $('.js-filter').attr('data-filter');
     },
     
     onSubmit : function(event)
     {
         if(event.which === 13 && $('#new-todo').val() !== "")
         {
-            Todo.Model.prototype.insertTodo( $('#new-todo').val(), $('.active-star.js-star').length );
+            new Todo.Model().insertTodo( $('#new-todo').val(), $('.active-star.js-star').length );
             this.doUpdate( this.criteria() );
-            Todo.View.prototype.animateTodo( Todo.Model.prototype.getCurrentTodo() );
+            new Todo.View().animateTodo( new Todo.Model().getCurrentTodo() );
             $('#new-todo:text').val('');
         }
     },
     
     onTodoCheck : function(event)
     {
-        Todo.Model.prototype.updateTodo( this.getTodo(event), false, false );
+        new Todo.Model().updateTodo( this.getTodo(event), false, false );
         this.doUpdate( this.criteria() );
     },
     
     onTodoDelete : function(event)
     {
-        Todo.Model.prototype.updateTodo( this.getTodo(event), true );
+        new Todo.Model().updateTodo( this.getTodo(event), true );
         this.doUpdate(this.criteria());
     },
     
@@ -97,13 +82,13 @@ Todo.Pamela.prototype = {
     {
         var newPriority = parseInt($(event.currentTarget).text()) + 1 ;
         newPriority = newPriority > 5 ? 1 : newPriority;
-        Todo.Model.prototype.updateTodo( this.getTodo(event), false, true, false, newPriority );
+        new Todo.Model().updateTodo( this.getTodo(event), false, true, false, newPriority );
         this.doUpdate( this.criteria() );
     },
     
     onClearCompleted : function()
     {
-        Todo.Model.prototype.clearCompleted();
+        new Todo.Model().clearCompleted();
         this.doUpdate( this.criteria() );
     },
     
@@ -140,7 +125,7 @@ Todo.Pamela.prototype = {
     {
         if(event.which === 13 && $('.edit-todo-input:visible').val() !== "")
         {
-            Todo.Model.prototype.updateTodo( this.getTodo(event), false, true, $('.edit-todo-input:visible').val() );
+            new Todo.Model().updateTodo( this.getTodo(event), false, true, $('.edit-todo-input:visible').val() );
             this.doUpdate(this.criteria());
             $('.edit-todo-input:visible').val('');
         }
@@ -148,15 +133,15 @@ Todo.Pamela.prototype = {
     
     onSelectAll : function()
     {
-        Todo.Model.prototype.makeAllCompleted();
+        new Todo.Model().makeAllCompleted();
         this.doUpdate( this.criteria() );
     },
     
     doUpdate : function(criteria,deleted)
     {
-        Todo.View.prototype.updateView( 
-            Todo.Model.prototype.getFromLocalStorage(criteria),
-            Todo.Model.prototype.countLeftItems(),
+        new Todo.View().updateView( 
+            new Todo.Model().getFromLocalStorage(criteria),
+            new Todo.Model().countLeftItems(),
             deleted
          );
     },
@@ -169,18 +154,18 @@ Todo.Pamela.prototype = {
     
     onRestore : function(event)
     {
-        Todo.Model.prototype.updateTodo( this.getTodo(event), false, true, false, false );
+        new Todo.Model().updateTodo( this.getTodo(event), false, true, false, false );
         this.doUpdate( this.criteria(), true );
     },
     
     onSort : function()
     {
         var deleted = this.criteria() === 'deleted' ? true : false;
-        Todo.View.prototype.updateView( 
-            Todo.Model.prototype.getFromLocalStorage(this.criteria()).sort(function(a, b) {
+        new Todo.View().updateView( 
+            new Todo.Model().getFromLocalStorage(this.criteria()).sort(function(a, b) {
                     return parseFloat(b.priority) - parseFloat(a.priority);
                 }),
-            Todo.Model.prototype.countLeftItems(),
+            new Todo.Model().countLeftItems(),
             deleted
          );
     }
