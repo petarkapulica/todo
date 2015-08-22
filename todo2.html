@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO PERO</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="public/css/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+        <link href="public/css/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+    <!--[if IE]>
+        <link href="public/stylesheets/sass/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    </head>
+    <body>
+        <div class="about-todo-app">
+            <div class="about-todo-wrapper">
+                <div>This application is made by Svetlan Mecava.</div>
+                <div>Create, read, update, delete, sort, prioritize, filter and restore todos.</div>
+                <div>Tips</div>
+                <ul>
+                    <li>Double click todo to edit it</li>
+                    <li>Hover priority stars to set priority</li>
+                    <li>Click on star to change priority</li>
+                    <li>Restore todo from recycle bin by cliciking on restore icon</li>
+                </ul>
+            </div>
+        </div>
+        <h1>todos</h1>
+        <div class="todos">
+            <div class="todos-wrapper">
+                <div class="new-todo left">
+                    <input autofocus id="new-todo" type="text" placeholder="What needs to be done?"/>
+                    <div class="priority">
+                        <span>Priority</span>
+                        <div class="priority-star js-star"></div>
+                        <div class="priority-star js-star"></div>
+                        <div class="priority-star js-star"></div>
+                        <div class="priority-star js-star"></div>
+                        <div class="priority-star js-star"></div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="todo-list">
+                <ul></ul>
+            </div>
+            <br>
+            <div class="todo-nav hidden clearfix">
+                <div class="todos-left left">
+                    <p>1 item left</p>
+                </div>
+                <div class="todos-filter left">
+                    <span class="filter filter-all js-filter" data-filter='all'>All</span>
+                    <span class="filter filter-active" data-filter='active'>Active</span>
+                    <span class="filter filter-completed" data-filter='completed'>Completed</span>
+                </div>
+                <div class="todo-sort left">
+                    <div class="todo-sort-wrapper">
+                        <div title="complete all" class="ico ico-select-all"></div>
+                        <div title="sort by highest priority" class="ico ico-sort-priority"></div>
+                        <div title="info" class="ico ico-info"></div>
+                    </div>
+                </div>
+                <div class="todos-clear left">
+                    <span><button class="clear-completed">Clear completed</button></span>
+                </div>
+                <div title="deleted todos" class="recycle-bin" data-filter='deleted'></div>
+            </div>
+            <div class="footer">
+                v1.0 copyright svetlanMecava
+            </div>
+        </div>
+        <footer>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+            <script src="public/javascripts2/app.js"></script>;
+            <script src="public/javascripts2/controllers/todo.js"></script>;
+            <script src="public/javascripts2/views/todo.js"></script>;
+            <script src="public/javascripts2/models/todo.js"></script>;
+            <script src="public/javascripts2/models/todo/get.js"></script>;
+            <script src="public/javascripts2/models/todo/insert.js"></script>;
+        </footer>
+    </body>
+</html>

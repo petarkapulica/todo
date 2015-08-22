@@ -2,15 +2,15 @@
 var Todo = Todo || {};
 
 Todo.Model = function(){
-    
+
 };
 
 Todo.Model.prototype = {
-    
+
     todos : [],
-    
+
     remaining : 0,
-    
+
     insertTodo : function(name, priority)
     {
         var todo = {
@@ -24,19 +24,19 @@ Todo.Model.prototype = {
         this.todos.push(todo);
         this.pushToLocalStorage();
     },
-    
+
     makeOrder : function()
     {
-        return this.getFromLocalStorage() ? 
+        return this.getFromLocalStorage() ?
         parseInt( this.getFromLocalStorage().slice(-1)[0].order + 1 ):
         1 ;
     },
-    
+
     pushToLocalStorage : function()
     {
         localStorage.todos = JSON.stringify(this.todos);
     },
-    
+
     getFromLocalStorage : function(criteria)
     {
         var todos = localStorage.todos !== undefined ?
@@ -53,7 +53,7 @@ Todo.Model.prototype = {
             default: return this.getTodos(todos);
         };
     },
-    
+
     getAllTodos : function(todos)
     {
         this.todos = [];
@@ -67,7 +67,7 @@ Todo.Model.prototype = {
             return false;
         }
     },
-    
+
     allTodos : function(key, value)
     {
         if(!value.deleted)
@@ -75,7 +75,7 @@ Todo.Model.prototype = {
             this.todos.push(value);
         }
     },
-    
+
     getActiveTodos : function(todos)
     {
         this.todos = [];
@@ -87,9 +87,9 @@ Todo.Model.prototype = {
         else
         {
             return false;
-        } 
+        }
     },
-    
+
     activeTodos : function(key, value)
     {
         if(!value.completed && !value.deleted)
@@ -97,7 +97,7 @@ Todo.Model.prototype = {
             this.todos.push(value);
         }
     },
-    
+
     getCompletedTodos : function(todos)
     {
         this.todos = [];
@@ -109,9 +109,9 @@ Todo.Model.prototype = {
         else
         {
             return false;
-        } 
+        }
     },
-    
+
     completedTodos : function(key, value)
     {
         if(value.completed && !value.deleted)
@@ -119,7 +119,7 @@ Todo.Model.prototype = {
             this.todos.push(value);
         }
     },
-    
+
     getDeletedTodos : function(todos)
     {
         this.todos = [];
@@ -131,9 +131,9 @@ Todo.Model.prototype = {
         else
         {
             return false;
-        } 
+        }
     },
-    
+
     deletedTodos : function(key, value)
     {
         if(value.deleted)
@@ -141,7 +141,7 @@ Todo.Model.prototype = {
             this.todos.push(value);
         }
     },
-    
+
     getTodos : function(todos)
     {
         this.todos = [];
@@ -153,14 +153,14 @@ Todo.Model.prototype = {
         else
         {
             return false;
-        } 
+        }
     },
-    
+
     todo : function(key, value)
     {
         this.todos.push(value);
     },
-    
+
     updateTodo : function(todoOrder, newDeleted, newCompleted, newName, newPriority)
     {
         var oldTodo;
@@ -182,41 +182,41 @@ Todo.Model.prototype = {
         var newTodo = oldTodo;
         this.updateLocalStorage(newTodo, todoOrder);
     },
-    
+
     updateLocalStorage : function(newTodo, todoOrder)
     {
         this.createTodosArray();
         $.extend( this.todos[todoOrder - 1], newTodo );
         this.pushToLocalStorage();
     },
-    
+
     createTodosArray : function()
     {
         this.todos = this.getFromLocalStorage();
     },
-    
+
     countLeftItems : function()
     {
         this.remaining = 0;
         $.each( this.getFromLocalStorage(),$.proxy(this.todosLeft,this) );
         return this.remaining;
     },
-    
+
     todosLeft : function(key,value)
     {
         if(!value.completed && !value.deleted)
         {
-            this.remaining ++; 
+            this.remaining ++;
         }
     },
-    
+
     clearCompleted : function()
     {
         this.createTodosArray();
         $.each(this.todos, $.proxy(this.clearTodo, this));
         this.pushToLocalStorage();
     },
-    
+
     clearTodo : function(key,value)
     {
         if(value.completed && !value.deleted)
@@ -224,19 +224,19 @@ Todo.Model.prototype = {
             value.deleted = true;
         }
     },
-    
+
     makeAllCompleted : function()
     {
         this.createTodosArray();
         $.each(this.todos, $.proxy(this.completeTodo, this));
         this.pushToLocalStorage();
     },
-    
+
     completeTodo : function(key, value)
     {
         value.completed = true;
     },
-    
+
     getCurrentTodo : function()
     {
         var todoArr = this.getFromLocalStorage();
@@ -251,5 +251,5 @@ Todo.Model.prototype = {
             }
         }
     }
-    
+
 };
