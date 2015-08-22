@@ -4,8 +4,8 @@ Todo.TodoModel = function(){
 
   var remaining = 0;
 
-  var getFromLocalStorage = function(){
-    return Todo.TodoModelGet().getFromLocalStorage();
+  var getFromLocalStorage = function(criteria){
+    return Todo.TodoModelGet().getFromLocalStorage(criteria);
   };
 
   var countLeftItems = function(){
@@ -23,7 +23,10 @@ Todo.TodoModel = function(){
     get : getFromLocalStorage,
     countLeftItems : countLeftItems,
     insert : Todo.TodoModelInsert().insert,
-    currentTodo : Todo.TodoModelGet().getCurrentTodo
+    currentTodo : Todo.TodoModelGet().getCurrentTodo,
+    update : Todo.TodoModelUpdate().update,
+    completeAll : Todo.TodoModelUpdate().completeAll,
+    clear : Todo.TodoModelUpdate().clearCompleted
   };
 
 };

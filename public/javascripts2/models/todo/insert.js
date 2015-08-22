@@ -3,9 +3,9 @@ var Todo = Todo || {};
 Todo.TodoModelInsert = function(){
 
   var todos = [];
-  var remaining = 0;
-  var getFromLocalStorage = function(){
-    return Todo.TodoModelGet().getFromLocalStorage();
+
+  var getFromLocalStorage = function(criteria){
+    return Todo.TodoModelGet().getFromLocalStorage(criteria);
   };
 
   var insertTodo = function(name, priority){

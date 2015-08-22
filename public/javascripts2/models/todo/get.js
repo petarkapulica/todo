@@ -3,7 +3,6 @@ var Todo = Todo || {};
 Todo.TodoModelGet = function(){
 
   var todos = [];
-  var remaining = 0;
 
   var getFromLocalStorage = function(criteria){
     var myTodos = localStorage.todos !== undefined ?
