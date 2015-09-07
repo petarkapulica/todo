@@ -1,20 +1,20 @@
 ;
-var Todo = Todo || {};
+requirejs.config({
+    baseUrl: 'public/javascripts2',
+    paths: {
+        jquery: 'bower/jquery/dist/jquery'
+    }
+});
 
-Todo.Application = function(){
+require([
+  'jquery',
+  'controllers/todo'
+],function($, TodoController) {
 
-  var init = function(){
-    Todo.TodoController();
-  };
+  $(function(){
+      
+    TodoController();
 
-  return {
-    init : init
-  };
-
-};
-
-$(function(){
-
-   Todo.Application().init();
+  });
 
 });

@@ -1,0 +1,23 @@
+{
+  "name": "todo",
+  "version": "0.0.0",
+  "homepage": "https://github.com/petarkapulica/todo",
+  "authors": [
+    "petarkapulica <epkapuleti@gmail.com>"
+  ],
+  "directory": "public/javascripts2/bower/",
+  "description": "todo",
+  "main": "public/javascripts2/app.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "requirejs": "~2.1.20"
+  }
+}

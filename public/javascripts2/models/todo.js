@@ -1,15 +1,27 @@
-var Todo = Todo || {};
+;
 //kontroler komunicira samo s ovim
-Todo.TodoModel = function(){
 
-  return {
-    get : Todo.TodoModelGet().getFromLocalStorage,
-    countLeftItems : Todo.TodoModelCount().count,
-    insert : Todo.TodoModelInsert().insert,
-    currentTodo : Todo.TodoModelGet().getCurrentTodo,
-    update : Todo.TodoModelUpdate().update,
-    completeAll : Todo.TodoModelUpdate().completeAll,
-    clear : Todo.TodoModelUpdate().clearCompleted
-  };
+define([
+    './todo/count',
+    './todo/get',
+    './todo/insert',
+    './todo/update'  
+],function(Count, Get, Insert, Update){
 
-};
+    TodoModel = function(){
+
+      return {
+        get : Get().getFromLocalStorage,
+        countLeftItems : Count().count,
+        insert : Insert().insert,
+        currentTodo : Get().getCurrentTodo,
+        update : Update().update,
+        completeAll : Update().completeAll,
+        clear : Update().clearCompleted
+      };
+
+    };
+
+    return TodoModel;
+
+});

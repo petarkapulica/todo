@@ -1,26 +1,33 @@
-var Todo = Todo || {};
+;
+define([
+    'models/todo/get'
+],function(TodoModelGet){
 
-Todo.TodoModelCount = function(){
+    TodoModelCount = function(){
 
-  var remaining = 0;
+      var remaining = 0;
 
-  var getFromLocalStorage = function(criteria){
-    return Todo.TodoModelGet().getFromLocalStorage(criteria);
-  };
+      var getFromLocalStorage = function(criteria){
+        return TodoModelGet().getFromLocalStorage(criteria);
+      };
 
-  var countLeftItems = function(){
-    remaining = 0;
-    $.each( getFromLocalStorage(),function(key,value){
-      if(!value.completed && !value.deleted)
-      {
-        remaining ++;
-      }
-    });
-    return remaining;
-  };
+      var countLeftItems = function(){
+        remaining = 0;
+        $.each( getFromLocalStorage(),function(key,value){
+          if(!value.completed && !value.deleted)
+          {
+            remaining ++;
+          }
+        });
+        return remaining;
+      };
 
-  return {
-    count : countLeftItems
-  }
+      return {
+        count : countLeftItems
+      };
 
-};
+    };
+    
+    return TodoModelCount;
+    
+});
