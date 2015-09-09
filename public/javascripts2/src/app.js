@@ -1,10 +1,5 @@
 ;
-requirejs.config({
-    baseUrl: 'public/javascripts2',
-    paths: {
-        jquery: 'bower/jquery/dist/jquery'
-    }
-});
+requirejs.config(SiteConfig);
 
 require([
   'jquery',

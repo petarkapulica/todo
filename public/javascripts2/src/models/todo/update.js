@@ -3,7 +3,7 @@ define([
     'models/todo/get'
 ],function(TodoModelGet){
 
-    TodoModelUpdate = function(){
+    var TodoModelUpdate = function(){
 
     var todos = [];
 

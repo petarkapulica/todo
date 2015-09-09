@@ -5,7 +5,7 @@
   "authors": [
     "petarkapulica <epkapuleti@gmail.com>"
   ],
-  "directory": "public/javascripts2/bower/",
+  "directory": "public/bower/",
   "description": "todo",
   "main": "public/javascripts2/app.js",
   "license": "MIT",
@@ -18,6 +18,8 @@
   ],
   "dependencies": {
     "jquery": "~2.1.4",
-    "requirejs": "~2.1.20"
+    "requirejs": "~2.1.20",
+    "text": "requirejs/text#~2.0.13",
+    "twig.js": "~0.7.2"
   }
 }

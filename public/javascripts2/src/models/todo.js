@@ -8,7 +8,7 @@ define([
     './todo/update'  
 ],function(Count, Get, Insert, Update){
 
-    TodoModel = function(){
+    var TodoModel = function(){
 
       return {
         get : Get().getFromLocalStorage,

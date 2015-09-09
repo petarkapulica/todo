@@ -1,7 +1,7 @@
 ;
 define([],function(){
 
-    TodoModelGet = function(){
+    var TodoModelGet = function(){
 
       var getFromLocalStorage = function(criteria){
         var myTodos = localStorage.todos !== undefined ?

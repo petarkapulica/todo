@@ -3,7 +3,7 @@ define([
     'models/todo/get'
 ],function(TodoModelGet){
 
-    TodoModelCount = function(){
+    var TodoModelCount = function(){
 
       var remaining = 0;
 

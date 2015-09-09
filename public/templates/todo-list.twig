@@ -1,0 +1,22 @@
+{% for todo in todos %}
+    <li data-order="{{ todo.order }}">
+        <div class="ico ico-check left 
+            {% if todo.completed %}
+                js-completed
+            {% endif %}">
+        </div>
+        <div class="todo-item left">
+            <div class="todo-text 
+            {% if todo.completed %}
+                js-completed
+            {% endif %}">{{ todo.name }}
+            </div>
+            <span class="priority-star active-star js-changable-star right">
+                {{ todo.priority }}
+            </span>
+        </div>
+        <div class="ico ico-edit right"></div>
+        <div class="ico ico-delete right"></div>
+        <input type="text" class="edit-todo-input hidden" />
+    </li>
+{% endfor %}

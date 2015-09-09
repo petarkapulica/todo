@@ -5,7 +5,7 @@ define([
     'views/todo'
 ],function(TodoModel, TodoView){
 
-    TodoController = function(){
+    var Controller = function(){ 
 
       //priority stars hover
       $('.priority-star.js-star').on('mouseenter', function(){
@@ -133,6 +133,6 @@ define([
 
     };
 
-    return TodoController;
+    return Controller;
 
 });

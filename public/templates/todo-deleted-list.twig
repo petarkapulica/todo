@@ -1,0 +1,12 @@
+{% for todo in todos %}
+    <li data-order="{{ todo.order }}">
+        <div class="todo-item left">
+            <div class="todo-text 
+            {% if todo.completed %}
+                js-completed
+            {% endif %}">{{ todo.name }}
+            </div>
+        </div>
+        <div title="restore-todo" class="ico ico-restore right"></div>
+    </li>
+{% endfor %}
